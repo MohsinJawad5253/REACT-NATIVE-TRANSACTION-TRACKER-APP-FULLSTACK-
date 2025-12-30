@@ -1,6 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
-import { sql ,initDB } from "./Config/db.js"
+import { sql, initDB } from "./Config/db.js"
 import ratelimiter from "./middleware/Ratelimiter.js"
 import transactionsRoute from "./Routes/transactionRoutes.js"
 
@@ -15,17 +15,17 @@ const PORT = process.env.PORT || 5001
 
 
 
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
     res.send("SERVER IS UP ON 5001 PORT 👍")
 })
 
-app.use("/api/transactions",transactionsRoute)
+app.use("/api/transactions", transactionsRoute)
 
 
-console.log("PORT:",PORT)
+console.log("PORT:", PORT)
 
-initDB().then(()=> {
-    app.listen(PORT , () => {
-    console.log(`Server Up on ${PORT} 👍👍`)
-});
+initDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server Up on ${PORT} 👍👍`)
+    });
 })
